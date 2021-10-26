@@ -22,11 +22,11 @@ public class Map {
 
         Room room1 = new Room("Meim"," In front of you, you see a small village. " +
                 "\nIt's a farmer village. You see a tiny flee market, and the occasionally horse carriage carry goods between the stands. \nYou see the town folks is smiling, and having a good time." +
-                "\nThe village does have a wall surrounding them, and you see a gate to the north, south, east and west." + "\nWhere would you like to go?");
+                "\nThe village does have a wall surrounding them, and you see a gate to the north, south, east and west.");
 
         Room room2 = new Room("Bofast", " In front of you, you see a small village. " +
                 "\nIt's a farmer village. You see a tiny flee market, and the occasionally horse carriage carry goods between the stands. \nYou see the town folks is smiling, and having a good time." +
-                "\nThe village does have a wall surrounding them, and you see a gate to the north, south, east and west." + "\nWhere would you like to go?");
+                "\nThe village does have a wall surrounding them, and you see a gate to the north, south, east and west.");
         Room room3 = new Room("Icohull", "\nThis is where the hardworking miners of the Lutus Dynasty lives. \nEvery equipment made for the royal guards of Yrevale is made here. " +
                 "It's glorious and the heavy air is filled with sweat scents from all the miners. It's beautiful.");
         Room room4 = new Room("Yemont","\nYou arrive at the town square of " +  " it's night time, and your senses is overloaded by the delicious smells from the nearby restaurants. " +
@@ -49,7 +49,7 @@ public class Map {
         // Rum 1 //
         //Items i rum 1 //
 
-        Item hammer = new Weapon("Thor", "Beskrivelse");
+        Item hammer = new Weapon("Hammer", "Beskrivelse");
         Item sword = new Weapon("Sword", "anden beskrivelse");
 
         room1.addItem(hammer);

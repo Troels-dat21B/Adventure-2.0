@@ -1,12 +1,12 @@
+import java.util.ArrayList;
+
 public class Player{
     private Room room;
-    private Inventory inventory;
+    private ArrayList<Item> inventory = new ArrayList<>();
 
 
 
-    public Player(Room aRoom){
-        this.room = aRoom;
-    }
+
 
     public Room getRoom() {
         return room;
@@ -16,6 +16,15 @@ public class Player{
         this.room = room;
     }
 
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
 
+    public void addItem(Item item){
+        this.inventory.add(item);
+    }
 
+    public void removeITem(Item iTem){
+        this.inventory.remove(iTem);
+    }
 }

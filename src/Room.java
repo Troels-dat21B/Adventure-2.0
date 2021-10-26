@@ -10,7 +10,7 @@ public class Room {
     private String name;
     private String description;
 
-    private ArrayList<Item> inventory;
+    private ArrayList<Item> inventory = new ArrayList<>();
 
     public Room(){}
 

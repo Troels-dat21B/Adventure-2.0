@@ -7,13 +7,15 @@ public class AdventureGame {
 
     public static void main(String[] args) {
 
-        Scanner scan = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         boolean isWalid = true;
         boolean gameIsRunning = true;
         Map map = new Map(1);
         Colors color = new Colors();
+        Player player = new Player();
 
         Room currentRoom = map.getStarterRoom();
+        player.setRoom(currentRoom);
 
 
         System.out.println("Welcome to KEA adventure game.");
@@ -33,9 +35,9 @@ public class AdventureGame {
 
 
         while (gameIsRunning) {
-            System.out.println("Choose a direction");
+            System.out.println("Type a command");
 
-            String input = scan.nextLine();
+            String input = scanner.nextLine();
             do {
                 if (input.equalsIgnoreCase("Go south") ||
                         input.equalsIgnoreCase("Go east") ||
@@ -46,7 +48,8 @@ public class AdventureGame {
                         input.equalsIgnoreCase("Look") ||
                         input.equalsIgnoreCase("Take") ||
                         input.equalsIgnoreCase("Drop") ||
-                        input.equalsIgnoreCase("Inventory/Inv")) {
+                        input.equalsIgnoreCase("Inventory")||
+                        input.equalsIgnoreCase("Inv")) {
 
 
                     isWalid = true;
@@ -77,7 +80,12 @@ public class AdventureGame {
                     break;
                 case "look":
                     System.out.println(currentRoom);
-                    System.out.println(currentRoom.getInventory());
+                    if(currentRoom.getInventory().size() == 0){
+                        System.out.println("This place don't have items to take");
+                    }else{
+                        System.out.println("This place offers these items");
+                        System.out.println(currentRoom.getInventory());
+                    }
                     break;
 
                 case "go north":
@@ -117,22 +125,40 @@ public class AdventureGame {
                     break;
 
                 case "take":
-                    //Tag item fra rum og lig til Player
+                    if(currentRoom.getInventory().size() == 0){
+                        System.out.println("This place does not have any items...");
+                        break;
+                    }
+                    System.out.println("What would you like to take?");
+                    input = scanner.nextLine();
+                    for(int i = 0; i < currentRoom.getInventory().size(); i++){
+                        if(input.equalsIgnoreCase(currentRoom.getInventory().get(i).toString())){
+                            player.addItem(currentRoom.getInventory().get(i));
+                            currentRoom.removeITem(currentRoom.getInventory().get(i));
+                        }
+                    }
                     break;
                 case "drop":
-                    //Tag item fra Player og lig til rum
+                    if(player.getInventory().size() == 0){
+                        System.out.println("Inventory is empty...");
+                        break;
+                    }
+                    System.out.println("What would you like to drop?");
+                    input = scanner.nextLine();
+                    for(int i = 0; i < player.getInventory().size(); i++){
+                        if(input.equalsIgnoreCase(player.getInventory().get(i).toString())){
+                            currentRoom.addItem(player.getInventory().get(i));
+                            player.removeITem(player.getInventory().get(i));
+                        }
+                    }
                     break;
                 case "inventory":
                 case "inv":
-                    //Vis liste med Player inventory
+                    System.out.println(player.getInventory());
                     break;
 
             }
-
-
         }
-
-
     }
 }
 
