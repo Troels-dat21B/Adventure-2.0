@@ -73,8 +73,8 @@ public class AdventureGame {
                             - exit: You can exit the game at any moment by typing "exit".
                             - look: When you type "look" you will get a description of the room.
                             - help: When you are typing "help" this list will come.
-                            - take
-                            - drop
+                            - take/take all: Take a single item or all items in the room.
+                            - drop: to drop an item from inventory
                             - inventory/inv
                             """);
                     break;
@@ -138,6 +138,14 @@ public class AdventureGame {
                         }
                     }
                     break;
+                case "take all":
+                    if(currentRoom.getInventory().size() == 0){
+                        System.out.println("This place does not have any items...");
+                        break;
+                    }
+                    for(int i = 0; i < currentRoom.getInventory().size(); i++){
+                        player.addItem(currentRoom.getInventory().get(i));
+                    }
                 case "drop":
                     if(player.getInventory().size() == 0){
                         System.out.println("Inventory is empty...");
